@@ -11,9 +11,9 @@ function addR() {
     for (let i = 0; i < (numCols || 1); i++)   //if no numCols then i == 1 for loop
     {
         const cell = row.insertCell();
-        cell.onclick = function ()      //onclick: aticved by click button
+        cell.onclick = function ()      //function(): anonymous function
         {
-            this.style.backgroundColor = colorSelected;         //change color by select dropdown menu
+            this.style.backgroundColor = colorSelected;         //change color when onclick
         };
         
     }
@@ -22,7 +22,7 @@ function addR() {
     {
         numCols = 1;
     }
-    numRows++;          //loop for add row
+    numRows++;          //loop then add row counter
 }
 
 // Add a column
@@ -43,7 +43,7 @@ function addC() {
                 const cell = row.insertCell();          // Insert a new cell at the end of the row
                 cell.onclick = function() 
             {
-                this.style.backgroundColor = colorSelected; // Set the background color on click
+                this.style.backgroundColor = colorSelected; // Set the background color when onclick
             };
         }
     }
@@ -57,7 +57,7 @@ function removeR() {
 
     if (numRows > 0) 
     {
-        table.deleteRow(numRows - 1); // Delete the last row
+        table.deleteRow(numRows - 1);     // Delete the last row
         numRows--;
     }
 
@@ -86,7 +86,7 @@ function removeC()
     if (numCols === 0) 
     {
         numRows = 0;
-        table.innerHTML = ""; // Clear the table completely
+        table.innerHTML = ""; // HTML content be empty
     }
 }
 
@@ -94,7 +94,7 @@ function removeC()
 function selectColor() 
 {
     colorSelected = document.getElementById("selectedColorId").value;
-    console.log("Selected color: ", colorSelected);
+    
 }
 
 // Fill all uncolored cells
