@@ -4,17 +4,16 @@ let numCols = 0;
 let colorSelected;
 
 //Add a row
-function addR() 
-{
+function addR() {
     const table = document.getElementById("grid");
     const row = table.insertRow();      //insertRow():DOM method for Insert a new row into the table
 
     for (let i = 0; i < (numCols || 1); i++)   //if no numCols then i == 1 for loop
     {
         const cell = row.insertCell();
-        cell.onclick = function ()      //onclick: aticved by click button
+        cell.onclick = function ()      //function(): anonymous function
         {
-            this.style.backgroundColor = colorSelected;         //change color by select dropdown menu
+            this.style.backgroundColor = colorSelected;         //change color when onclick
         };
         
     }
@@ -23,14 +22,14 @@ function addR()
     {
         numCols = 1;
     }
-    numRows++;          //loop for add row
+    numRows++;          //loop then add row counter
 }
 
 // Add a column
-function addC() 
-{
+function addC() {
     const table = document.getElementById("grid");
 
+    // If there are no rows, add a row first
     if (numRows === 0)
     {
         addR();
@@ -44,7 +43,7 @@ function addC()
                 const cell = row.insertCell();          // Insert a new cell at the end of the row
                 cell.onclick = function() 
             {
-                this.style.backgroundColor = colorSelected; // Set the background color on click
+                this.style.backgroundColor = colorSelected; // Set the background color when onclick
             };
         }
     }
@@ -53,17 +52,16 @@ function addC()
 }
 
 // Remove a row
-function removeR() 
-{
+function removeR() {
     const table = document.getElementById("grid");
 
     if (numRows > 0) 
     {
-        table.deleteRow(numRows - 1); // Delete the last row
+        table.deleteRow(numRows - 1);     // Delete the last row
         numRows--;
     }
 
-    // If all rows are removed, column count be 0
+    // If all rows are removed, reset the column count
     if (numRows === 0) 
     {
         numCols = 0;
@@ -79,8 +77,7 @@ function removeC()
     {
         for (let i = 0; i < numRows; i++) 
         {
-            table.rows[i].deleteCell(numCols - 1); 
-            // Delete the last cell of each row
+            table.rows[i].deleteCell(numCols - 1); // Delete the last cell of each row
         }
         numCols--;
     }
@@ -89,7 +86,7 @@ function removeC()
     if (numCols === 0) 
     {
         numRows = 0;
-        table.innerHTML = ""; // Clear the table completely
+        table.innerHTML = ""; // HTML content be empty
     }
 }
 
@@ -97,7 +94,7 @@ function removeC()
 function selectColor() 
 {
     colorSelected = document.getElementById("selectedColorId").value;
-    console.log("Selected color: ", colorSelected);
+    
 }
 
 // Fill all uncolored cells
@@ -118,8 +115,7 @@ function fillU()
 }
 
 // Fill all cells
-function fillAll() 
-{
+function fillAll() {
     const table = document.getElementById("grid");
     for (let i = 0; i < numRows; i++) 
         {
